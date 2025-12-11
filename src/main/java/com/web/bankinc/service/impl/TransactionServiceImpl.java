@@ -45,4 +45,10 @@ public class TransactionServiceImpl implements TransactionService {
         return transactionRepository.save(tx);
     }
 
+    @Override
+    public Transaction getTransaction(String transactionId) {
+        return transactionRepository.findByTransactionId(transactionId)
+                .orElseThrow(() -> new BusinessException("Transacción no existe."));
+    }
+
 }

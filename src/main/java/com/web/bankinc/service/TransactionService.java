@@ -7,4 +7,6 @@ public interface TransactionService {
 
     Transaction purchase(PurchaseDTO purchaseDTO);
 
+    Transaction getTransaction(String transactionId);
+
 }
