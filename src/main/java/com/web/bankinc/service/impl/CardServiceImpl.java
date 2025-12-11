@@ -53,4 +53,37 @@ public class CardServiceImpl implements CardService {
         return cardRepository.save(card);
     }
 
+    @Override
+    public void blockCard(String cardId) {
+
+        Card card = cardRepository.findById(cardId)
+                .orElseThrow(() -> new BusinessException("Tarjeta no existe"));
+
+        card.setBlocked(true);
+
+        cardRepository.save(card);
+
+    }
+
+    private Card validateCard(String cardId){
+
+        Card card = cardRepository.findById(cardId)
+                .orElseThrow(() -> new BusinessException("Tarjeta no existe"));
+
+        if(!card.isActive())
+            throw new BusinessException("Tarjeta no está activa");
+
+        if(card.isBlocked())
+            throw new BusinessException("Tarjeta bloqueada");
+
+        YearMonth expiration = YearMonth.parse(card.getExpiration());
+        YearMonth now = YearMonth.now();
+
+        if(expiration.isBefore(now))
+            throw new BusinessException("Tarjeta vencida");
+
+        return card;
+
+    }
+
 }

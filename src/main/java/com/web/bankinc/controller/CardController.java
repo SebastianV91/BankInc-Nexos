@@ -25,4 +25,13 @@ public class CardController {
         return ResponseEntity.ok(cardService.enrollCard(cardEnrollDTO.getCardId()));
     }
 
+    @DeleteMapping("/{cardId}")
+    public ResponseEntity<?> block(@PathVariable String cardId){
+
+        cardService.blockCard(cardId);
+
+        return ResponseEntity.noContent().build();
+
+    }
+
 }

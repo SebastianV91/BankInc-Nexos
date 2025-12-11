@@ -8,4 +8,6 @@ public interface CardService {
 
     Card enrollCard(String cardId);
 
+    void blockCard(String cardId);
+
 }
