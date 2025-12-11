@@ -65,6 +65,18 @@ public class CardServiceImpl implements CardService {
 
     }
 
+    @Override
+    public BigDecimal addBalance(String cardId, BigDecimal amount) {
+
+        Card card = validateCard(cardId);
+        BigDecimal newBalance = card.getBalance().add(amount);
+        card.setBalance(newBalance);
+        cardRepository.save(card);
+
+        return newBalance;
+
+    }
+
     private Card validateCard(String cardId){
 
         Card card = cardRepository.findById(cardId)
@@ -85,5 +97,7 @@ public class CardServiceImpl implements CardService {
         return card;
 
     }
+
+
 
 }

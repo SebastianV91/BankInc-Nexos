@@ -1,9 +1,12 @@
 package com.web.bankinc.controller;
 
+import com.web.bankinc.dto.AddBalanceDTO;
 import com.web.bankinc.dto.CardEnrollDTO;
 import com.web.bankinc.service.CardService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/card")
@@ -32,6 +35,11 @@ public class CardController {
 
         return ResponseEntity.noContent().build();
 
+    }
+
+    @PostMapping("/balance")
+    public ResponseEntity<BigDecimal> addBalance(@RequestBody AddBalanceDTO addBalanceDTO){
+        return ResponseEntity.ok(cardService.addBalance(addBalanceDTO.getCardId(), addBalanceDTO.getBalance()));
     }
 
 }
