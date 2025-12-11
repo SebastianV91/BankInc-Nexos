@@ -13,4 +13,6 @@ public interface CardService {
 
     BigDecimal addBalance(String cardId, BigDecimal amount);
 
+    BigDecimal getBalance(String cardId);
+
 }

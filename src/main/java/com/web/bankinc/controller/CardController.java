@@ -42,4 +42,9 @@ public class CardController {
         return ResponseEntity.ok(cardService.addBalance(addBalanceDTO.getCardId(), addBalanceDTO.getBalance()));
     }
 
+    @GetMapping("/balance/{cardId}")
+    public ResponseEntity<BigDecimal> getBalance(@PathVariable String cardId){
+        return ResponseEntity.ok(cardService.getBalance(cardId));
+    }
+
 }
