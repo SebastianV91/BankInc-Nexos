@@ -1,6 +1,7 @@
 package com.web.bankinc.service.impl;
 
 import com.web.bankinc.entity.Card;
+import com.web.bankinc.exception.BusinessException;
 import com.web.bankinc.repository.CardRepository;
 import com.web.bankinc.service.CardService;
 import com.web.bankinc.util.CardNumberGenerator;
@@ -36,6 +37,20 @@ public class CardServiceImpl implements CardService {
         cardRepository.save(card);
 
         return cardId;
+    }
+
+    @Override
+    public Card enrollCard(String cardId) {
+
+        Card card = cardRepository.findById(cardId)
+                .orElseThrow(() -> new BusinessException("Tarjeta no existe"));
+
+        if(card.isActive())
+            throw new BusinessException("La tarjeta ya está activa");
+
+        card.setActive(true);
+
+        return cardRepository.save(card);
     }
 
 }

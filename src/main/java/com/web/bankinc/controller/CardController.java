@@ -1,11 +1,9 @@
 package com.web.bankinc.controller;
 
+import com.web.bankinc.dto.CardEnrollDTO;
 import com.web.bankinc.service.CardService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/card")
@@ -20,6 +18,11 @@ public class CardController {
     @GetMapping("/{productId}/number")
     public ResponseEntity<String> generate(@PathVariable String productId){
         return ResponseEntity.ok(cardService.generatedCardNumber(productId));
+    }
+
+    @PostMapping("/enroll")
+    public ResponseEntity<?> enroll(@RequestBody CardEnrollDTO cardEnrollDTO){
+        return ResponseEntity.ok(cardService.enrollCard(cardEnrollDTO.getCardId()));
     }
 
 }
