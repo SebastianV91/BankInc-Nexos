@@ -8,51 +8,9 @@ Incluye generación de tarjetas, activación, bloqueo, transacciones, anulación
 🛠️ Tecnologías utilizadas
 Tecnología	Versión
 Java	17
-Spring Boot	3.x
+Spring Boot	3.4.12
 PostgreSQL	18
-Maven	3.8+
-Swagger UI (estático)	5.10.3
-JUnit 5 + Mockito	Testing
-📁 Estructura del proyecto
-src/main/java/com/bankinc/cardsystem/
-  ├── controller/
-  ├── service/
-  ├── repository/
-  ├── model/
-  ├── dto/
-  ├── exception/
-  ├── configuration/
-src/main/resources/
-  ├── application.properties
-  ├── static/swagger-ui/
-        ├── index.html
-        ├── swagger-ui.css
-        ├── swagger-ui-bundle.js
-        ├── swagger-ui-standalone-preset.js
-        ├── bankinc-openapi.yaml
 
-⚙️ Configuración de base de datos
-
-En application.yaml:
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/bankdb
-    username: postgres
-    password: 12345678
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        format_sql: true
-server:
-  port: 8080
-
-
-Crea la base de datos:
-
-CREATE DATABASE bankdb;
 
 ▶️ Cómo ejecutar el proyecto
 1. Clonar el repositorio
