@@ -54,7 +54,7 @@ Consulta de transacción
 
 Archivo incluido en:
 
-/postman/bankinc-card-system.postman_collection.json
+/COLECCION ENDPOINTS MICROSERVICIOS/COLECCION ENDPOINTS MICROSERVICIOS BANK INC.json
 
 💳 Endpoints principales
 
