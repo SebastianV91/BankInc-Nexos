@@ -33,18 +33,26 @@ src/main/resources/
 
 ⚙️ Configuración de base de datos
 
-En application.properties:
-
-spring.datasource.url=jdbc:postgresql://localhost:5432/bankinc
-spring.datasource.username=postgres
-spring.datasource.password=postgres
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
+En application.yaml:
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bankdb
+    username: postgres
+    password: 12345678
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+server:
+  port: 8080
 
 
 Crea la base de datos:
 
-CREATE DATABASE bankinc;
+CREATE DATABASE bankdb;
 
 ▶️ Cómo ejecutar el proyecto
 1. Clonar el repositorio
