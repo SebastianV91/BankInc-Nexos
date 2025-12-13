@@ -11,8 +11,9 @@ import java.util.UUID;
 public class Transaction {
 
     @Id
-    @Column(name = "transaction_id", length = 36)
-    private String transactionId;
+    @GeneratedValue
+    @Column(name = "transaction_id", nullable = false, updatable = false)
+    private UUID transactionId;
 
     @Column(name = "card_id", length = 36)
     private String cardId;
@@ -26,18 +27,11 @@ public class Transaction {
     @Column(name = "created_at")
     private LocalDateTime createdAt = LocalDateTime.now();
 
-    @PrePersist
-    public void ensureId() {
-        if(transactionId == null){
-            transactionId = UUID.randomUUID().toString();
-        }
-    }
-
-    public String getTransactionId() {
+    public UUID getTransactionId() {
         return transactionId;
     }
 
-    public void setTransactionId(String transactionId) {
+    public void setTransactionId(UUID transactionId) {
         this.transactionId = transactionId;
     }
 

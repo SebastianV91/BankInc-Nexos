@@ -1,11 +1,14 @@
 package com.web.bankinc.controller;
 
 import com.web.bankinc.dto.PurchaseDTO;
+import com.web.bankinc.dto.TransactionAnulationDTO;
 import com.web.bankinc.entity.Transaction;
 import com.web.bankinc.service.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/transaction")
@@ -31,8 +34,14 @@ public class TransactionController {
             description = "Obtiene una transacción por id"
     )
     @GetMapping("/{transactionId}")
-    public ResponseEntity<Transaction> get(@PathVariable String transactionId){
+    public ResponseEntity<Transaction> get(@PathVariable UUID transactionId){
         return ResponseEntity.ok(transactionService.getTransaction(transactionId));
+    }
+
+    @PostMapping("/anulation")
+    public ResponseEntity<?> anulate(@RequestBody TransactionAnulationDTO dto) {
+        transactionService.anulate(dto);
+        return ResponseEntity.ok().body("Transacción anulada correctamente");
     }
 
 }

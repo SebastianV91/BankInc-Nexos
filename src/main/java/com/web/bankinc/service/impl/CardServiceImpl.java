@@ -40,7 +40,7 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public Card enrollCard(String cardId) {
+    public Card enrollCard(String cardId, String holderName) {
 
         Card card = cardRepository.findById(cardId)
                 .orElseThrow(() -> new BusinessException("Tarjeta no existe"));
@@ -48,6 +48,7 @@ public class CardServiceImpl implements CardService {
         if(card.isActive())
             throw new BusinessException("La tarjeta ya está activa");
 
+        card.setHolderName(holderName);
         card.setActive(true);
 
         return cardRepository.save(card);

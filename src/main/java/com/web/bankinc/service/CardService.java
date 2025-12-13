@@ -7,7 +7,7 @@ public interface CardService {
 
     String generatedCardNumber(String productId);
 
-    Card enrollCard(String cardId);
+    Card enrollCard(String cardId, String holderName);
 
     void blockCard(String cardId);
 

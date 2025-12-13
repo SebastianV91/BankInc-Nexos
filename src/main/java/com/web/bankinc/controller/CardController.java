@@ -34,7 +34,7 @@ public class CardController {
     )
     @PostMapping("/enroll")
     public ResponseEntity<?> enroll(@RequestBody CardEnrollDTO cardEnrollDTO){
-        return ResponseEntity.ok(cardService.enrollCard(cardEnrollDTO.getCardId()));
+        return ResponseEntity.ok(cardService.enrollCard(cardEnrollDTO.getCardId(), cardEnrollDTO.getHolderName()));
     }
 
     @Operation(
