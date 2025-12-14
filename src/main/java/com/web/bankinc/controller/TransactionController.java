@@ -38,6 +38,10 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.getTransaction(transactionId));
     }
 
+    @Operation(
+            summary = "Anular transacción",
+            description = "Anula una transacción por id"
+    )
     @PostMapping("/anulation")
     public ResponseEntity<?> anulate(@RequestBody TransactionAnulationDTO dto) {
         transactionService.anulate(dto);
