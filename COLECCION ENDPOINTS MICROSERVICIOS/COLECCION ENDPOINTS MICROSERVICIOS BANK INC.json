@@ -121,6 +121,26 @@
           "path": ["transaction", "{{transactionId}}"]
         }
       }
+    },
+    {
+      "name": "8. Anulación de Transacción",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"cardId\": \"1020301234567890\",\n    \"transactionId\": \"{{transactionId}}\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/transaction/anulation",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["transaction", "anulation"]
+        }
+      }
     }
   ]
 }
