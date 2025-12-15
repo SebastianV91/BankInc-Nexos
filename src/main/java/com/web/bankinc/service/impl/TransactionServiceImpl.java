@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.YearMonth;
 import java.util.UUID;
 
 @Service
@@ -80,6 +81,16 @@ public class TransactionServiceImpl implements TransactionService {
 
         Card card = cardRepository.findById(transactionAnulationDTO.getCardId())
                 .orElseThrow(() -> new BusinessException("Tarjeta no existe."));
+
+        if(!card.isActive())
+            throw new BusinessException("Tarjeta no activa");
+
+        if(card.isBlocked())
+            throw new BusinessException("Tarjeta bloqueada");
+
+        YearMonth expiration = YearMonth.parse(card.getExpiration());
+        if(expiration.isBefore(YearMonth.now()))
+            throw new BusinessException("Tarjeta vencida");
 
         BigDecimal newBalance = card.getBalance().add(transaction.getAmount());
         card.setBalance(newBalance);
