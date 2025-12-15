@@ -78,3 +78,6 @@ POST /transaction/purchase
 
 🔵 7. Consultar transacción
 GET /transaction/{transactionId}
+
+🔵 8. Anular transacción
+POST /transaction/anulation
