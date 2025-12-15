@@ -17,43 +17,6 @@ PostgreSQL	18
 git clone https://github.com/SebastianV91/BankInc-Nexos
 cd BankInc-Nexos
 
-🌐 Documentación Swagger UI
-
-El proyecto incluye Swagger UI estático totalmente integrado.
-
-Una vez iniciado, puedes abrir:
-
-URL	Descripción
-http://localhost:8080/swagger
-Redirección automática
-http://localhost:8080/docs
-Alias
-http://localhost:8080/swagger-ui/index.html
-Swagger UI principal
-http://localhost:8080/api-docs
-OpenAPI YAML
-http://localhost:8080/api-docs/json
-OpenAPI JSON
-📬 Colección Postman
-
-Incluye todos los endpoints:
-
-Generación de tarjeta
-
-Activación
-
-Bloqueo
-
-Recarga
-
-Consulta de saldo
-
-Anulación
-
-Consulta de transacción
-
-Archivo incluido en:
-
 /COLECCION ENDPOINTS MICROSERVICIOS/COLECCION ENDPOINTS MICROSERVICIOS BANK INC.json
 
 💳 Endpoints principales
