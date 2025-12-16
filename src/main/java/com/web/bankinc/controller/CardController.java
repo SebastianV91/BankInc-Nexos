@@ -3,7 +3,6 @@ package com.web.bankinc.controller;
 import com.web.bankinc.dto.AddBalanceDTO;
 import com.web.bankinc.dto.CardEnrollDTO;
 import com.web.bankinc.service.CardService;
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +23,6 @@ public class CardController {
         return ResponseEntity.ok(cardService.generatedCardNumber(productId));
     }
 
-    @Operation(
-            summary = "Activar tarjeta",
-            description = "Activa una tarjeta con cardId y holderName"
-    )
     @PostMapping("/enroll")
     public ResponseEntity<?> enroll(@RequestBody CardEnrollDTO cardEnrollDTO){
         return ResponseEntity.ok(cardService.enrollCard(cardEnrollDTO.getCardId(), cardEnrollDTO.getHolderName()));
